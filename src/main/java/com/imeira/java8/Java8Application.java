@@ -12,10 +12,20 @@ import java.util.function.Predicate;
 public class Java8Application {
 
 	public static void filtro(List<String> lista, Predicate<String> condicao) {
-		for(String s: lista) {
+		//Forma antiga de iteracao
+		/*for(String s: lista) {
 			if (condicao.test(s))
 				System.out.println(s);
-		}
+		}*/
+
+		//Iteracao interna usando stream e filter
+		/*
+		lista.stream().filter((str)->condicao.test(str))
+				      .forEach((str)->System.out.println(str));
+		 */
+		//outra forma de fazer quando for apenas 1 parametro podemos utilizar assim ::
+		lista.stream().filter(condicao::test)
+				      .forEach(System.out::println);
 	}
 
 	public static void main(String[] args) {
