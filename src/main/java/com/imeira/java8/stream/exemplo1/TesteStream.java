@@ -14,8 +14,10 @@ public class TesteStream{
         Cliente c3 = new Cliente("josé", true, "789", 20);
 
         List<Cliente> clientes = Arrays.asList(c1, c2, c3);
-        //clientes.forEach(c -> System.out.println(c.getPontos()));
+        System.out.println("Todos pontos:");
+        clientes.forEach(c -> System.out.println(c.getPontos()));
 
+        System.out.println("Apenas prontos > 5");
         Set<Cliente> stream = clientes.stream().filter(c -> c.getPontos()>5).collect(Collectors.toSet());
 
         //List<Cliente> pontosMaiorCinco = stream.collect(Collectors.toList()); 
