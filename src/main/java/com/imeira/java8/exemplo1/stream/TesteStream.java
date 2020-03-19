@@ -1,4 +1,4 @@
-package com.imeira.java8.stream.exemplo1;
+package com.imeira.java8.exemplo1.stream;
 
 import java.util.*;
 import java.lang.*;
