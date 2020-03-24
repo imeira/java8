@@ -1,7 +1,9 @@
 package com.imeira.java8.exemplo2.stream;
 
-import java.util.Arrays;
-import java.util.List;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * JAVA 8 - Streams  <br>
@@ -41,6 +43,43 @@ public class Java8Streams {
 
     System.out.println("XXX Lista original XXX");
     System.out.println(lista);
+
+    System.out.println("XXX Strem.min or max - compara e retorna menor valor. XXX");
+    Optional<Integer> min = lista.stream()
+            .filter(e -> e % 2 == 0)
+            .min(Comparator.naturalOrder());
+    System.out.println(min.get());
+
+    System.out.println("XXX Strem.collect - Guardo Nova lista apenas com numero pares e multiplica por 3. XXX");
+    List<Integer> novaLista = lista.stream()
+            .filter(e -> e % 2 == 0)
+            .map(e -> e *3) // multiplica por 3
+            .collect(Collectors.toList());
+    System.out.println(novaLista);
+
+    System.out.println("XXX Strem.collect - Guardo num paga e agrupa pares e impares. XXX");
+    Map<Boolean, List<Integer>> mapa = lista.stream()
+            .map(e -> e * 3)
+            .collect(Collectors.groupingBy(e -> e % 2 == 0));
+    System.out.println(mapa);
+
+    System.out.println("XXX Strem.collect - Guardo num paga e agrupa  diisores por 3. XXX");
+    Map<Integer, List<Integer>> mapa2 = lista.stream()
+            .map(e -> e * 3)
+            .collect(Collectors.groupingBy(e -> e % 3));
+    System.out.println(mapa2);
+
+    System.out.println("XXX Strem.joining - Transforma a array de Integer em string e concatena. XXX");
+    String collect = lista.stream()
+            .map(e -> String.valueOf(e))
+            .collect(Collectors.joining());
+    System.out.println(collect);
+
+    System.out.println("XXX Strem.joining - Transforma a array de Integer em string e concatena e coloca delimitador. XXX");
+    String collect2 = lista.stream()
+            .map(e -> String.valueOf(e))
+            .collect(Collectors.joining(";"));
+    System.out.println(collect2);
 
 
   }
