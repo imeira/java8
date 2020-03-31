@@ -46,7 +46,7 @@ public class Java8_Streams_Creation {
     
     // BufferedReader - lines
     // streams.txt - 11, 12, 13
-    File file = new File("streams.txt");
+    File file = new File("README.md");
     FileReader in = new FileReader(file);
     try (BufferedReader br = new BufferedReader(in)) {
       br.lines().forEach(System.out::println);
